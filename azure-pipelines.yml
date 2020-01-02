@@ -13,8 +13,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      pip install -U sphinx
-      pip install -U edx-sphinx-theme
+      pip install -r requirements.txt
       choco install pandoc
       choco install plantuml
       choco install graphviz
