@@ -1,3 +1,4 @@
 build/
 source/*.rst
 !source/index.rst
+**/.vscode
