@@ -12,8 +12,11 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: 'pip install -U sphinx'
-
+    script: |
+      pip install -U sphinx
+      choco install pandoc
+      choco install plantuml
+      choco install graphviz
 - task: PowerShell@2
   inputs:
     filePath: 'build-docs.ps1'
