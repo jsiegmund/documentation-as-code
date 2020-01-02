@@ -20,3 +20,11 @@ steps:
 - task: PowerShell@2
   inputs:
     filePath: 'build-docs.ps1'
+
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: 'build/html'
+    azureSubscription: 'Visual Studio Enterprise: BizSpark (new)'
+    Destination: 'AzureBlob'
+    storage: 'documentationascode'
+    ContainerName: '$web'
