@@ -24,7 +24,7 @@ steps:
 - task: AzureFileCopy@3
   inputs:
     SourcePath: 'build/html'
-    azureSubscription: 'Visual Studio Enterprise: BizSpark (new)'
+    azureSubscription: 'documentation-as-code'
     Destination: 'AzureBlob'
     storage: 'documentationascode'
     ContainerName: '$web'
