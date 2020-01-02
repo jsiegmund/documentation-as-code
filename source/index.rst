@@ -6,11 +6,19 @@
 Welcome to sample-docs-reST's documentation!
 ============================================
 
+This sample repository combines document generation based on Markdown and reStructuredText 
+with diagram generation based on C4 PlantUML. The end result is a fully generated static HTML 
+website which can be very easily pushed to and hosted on an Azure storage account. 
+
+The entire process can be included in a build pipeline which triggers upon a commit on 
+the repository where you host these files.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-.. include:: about.rst
+   about.rst
+   diagrams.rst
 
 
 Indices and tables
