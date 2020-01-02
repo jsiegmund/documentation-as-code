@@ -11,7 +11,7 @@
 #>
 
 param (
-  [Switch]$ExcludeImages = $false
+  [Switch]$SkipImages = $false
 )
 
 # Set variables
@@ -20,12 +20,13 @@ $pandocExePath = "pandoc.exe"
 $plantumlExePath = "plantuml.exe"
 $diagramsOutputFolder = "$scriptsPath/source"
 
-Write-Host "Converting Markdown *.md files to reStructuredText .rst files." -ForegroundColor Yellow
+$markdownFiles = Get-ChildItem "source/*.md" -Recurse
+Write-Host "Converting $($markdownFiles.Count) Markdown *.md files to reStructuredText .rst files." -ForegroundColor Yellow
 
 # Run pandoc for every .md file and convert it in-place to .rst
-Get-ChildItem "source/*.md" | ForEach-Object {
+$markdownFiles | ForEach-Object {
   $fileFullName = $_.FullName
-  $fileOutputName = "source/$($_.BaseName).rst"
+  $fileOutputName = $fileFullName.Replace(".md", ".rst")
 
   $pandocArgs = @(
     "--from ""gfm""",
@@ -39,12 +40,13 @@ Get-ChildItem "source/*.md" | ForEach-Object {
 }
 
 # Image generation might be excluded to optimize build time when diagrams didn't change
-if (-not $ExcludeImages.IsPresent) {
+if (-not $SkipImages.IsPresent) {
 
-  Write-Host "Generating image files from .puml C4 diagrams." -ForegroundColor Yellow
+  $plantumlFiles = Get-ChildItem "source/diagrams/*.puml"
+  Write-Host "Converting $($plantumlFiles.Count) Plant-UML .puml files to images." -ForegroundColor Yellow
 
   # Run plantuml for every .puml file found in the diagrams folder
-  Get-ChildItem "source/diagrams/*.puml" | ForEach-Object {
+  $plantumlFiles | ForEach-Object {
     $fileFullName = $_.FullName
 
     $plantumlArgs = @(    

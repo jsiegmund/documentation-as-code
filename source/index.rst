@@ -13,12 +13,20 @@ website which can be very easily pushed to and hosted on an Azure storage accoun
 The entire process can be included in a build pipeline which triggers upon a commit on 
 the repository where you host these files.
 
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: About:
 
    about.rst
-   diagrams.rst
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: Diagrams:
+
+   diagrams/*
 
 
 Indices and tables

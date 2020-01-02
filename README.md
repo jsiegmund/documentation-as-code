@@ -14,6 +14,13 @@ For converting Markdown to reST, you can use pandoc:
 choco install pandoc
 ```
 
+Adding in diagram support using plantUML: 
+
+```
+choco install plantuml --version 1.2019.11.20191021
+choco install graphviz
+```
+
 Compiling the documentation can then be done by calling the PowerShell script: 
 
 ```
