@@ -14,6 +14,7 @@ steps:
   inputs:
     script: |
       pip install -U sphinx
+      pip install -U edx-sphinx-theme
       choco install pandoc
       choco install plantuml
       choco install graphviz
