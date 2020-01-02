@@ -10,10 +10,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: PythonScript@0
+- task: CmdLine@2
   inputs:
-    scriptSource: 'inline'
-    script: 'pip install sphinx'
+    script: 'pip install -U sphinx'
 
 - task: PowerShell@2
   inputs:
